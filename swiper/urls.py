@@ -21,5 +21,5 @@ from user import api as user_api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^user/verify_code/', user_api.get_verity_code),
+    url(r'^api/user/verify', user_api.get_verity_code),
 ]
