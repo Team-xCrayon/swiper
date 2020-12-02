@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_r)29b0f4x5)$&hlt+3m%v%-0__-r5w=bd4&ecq#7(n465g5*-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -120,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Cors设置-白名单
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:8000'  # 允许跨域请求的协议、域名和端口
+# )
+CORS_ORIGIN_ALLOW_ALL = True    # 允许所有的源，与白名单相同
+CORS_ALLOW_CREDENTIALS = True   # 启用Cookie

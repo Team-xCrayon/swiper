@@ -1,9 +1,9 @@
 import datetime
+
 from django.db import models
-
-
-# Create your models here.
 from django.utils.functional import cached_property
+
+from lib.orm import ModelMixin
 
 
 class User(models.Model):
@@ -35,11 +35,21 @@ class User(models.Model):
     def profile(self):
         """用户的配置项"""
         if not hasattr(self, '_profile'):
-            self._profile, _ = Profile.objects.get_or_created(id=self.id)
+            self._profile, _ = Profile.objects.get_or_create(id=self.id)
         return self._profile
 
+    def to_dict(self):
+        return {
+            "nickname": self.nickname,
+            "phonenum": self.phonenum,
+            "sex": self.sex,
+            "avatars": self.avatar,
+            "location": self.location,
+            "age": self.age,
+        }
 
-class Profile(models.Model):
+
+class Profile(models.Model, ModelMixin):
     """用户配置"""
 
     SEX = (

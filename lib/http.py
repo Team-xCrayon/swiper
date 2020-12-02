@@ -8,5 +8,5 @@ def render_json(data, code):
         'code': code,
         'data': data
     }
-    json_str = json.dumps(result, separators=[',', ':'])
+    json_str = json.dumps(result)
     return HttpResponse(json_str)
